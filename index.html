@@ -1,3 +1,7 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
 <!-- black friday bar  start -->
 <div class="holiday-special-bar">
   <div class="container">
@@ -302,50 +306,7 @@
   </div>
 </div> -->
 
-<script>
-  function getEDTTime() {
-    const options = {
-      timeZone: "America/New_York",
-      hour12: false
-    };
-    const edtString = new Date().toLocaleString("en-US", options);
-    return new Date(edtString);
-  }
 
-  function updateCountdown() {
-    const now = getEDTTime();
-
-    const midnight = new Date(now);
-    midnight.setHours(24, 0, 0, 0);
-
-    let diff = midnight - now;
-
-    if (diff <= 0) {
-      diff = 24 * 60 * 60 * 1000; // Reset to 24 hours if it's midnight
-    }
-
-    const hours = String(Math.floor(diff / 3600000)).padStart(2, "0");
-    const minutes = String(Math.floor((diff % 3600000) / 60000)).padStart(2, "0");
-    const seconds = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
-
-    // Update only if the values have changed
-    document.querySelectorAll("[data-timer-hour]").forEach(el => {
-      el.textContent = hours;
-    });
-
-    document.querySelectorAll("[data-timer-minute]").forEach(el => {
-      el.textContent = minutes;
-    });
-
-    document.querySelectorAll("[data-timer-seconds]").forEach(el => {
-      el.textContent = seconds;
-    });
-  }
-
-  // Update every second
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-</script>
 
 <!-- <style>
   [data-id="heyflow-main"]:has([name="page-home"].visible) {
@@ -467,3 +428,48 @@
     }
   }
 </style> -->
+
+<script>
+  function getEDTTime() {
+    const options = {
+      timeZone: "America/New_York",
+      hour12: false
+    };
+    const edtString = new Date().toLocaleString("en-US", options);
+    return new Date(edtString);
+  }
+
+  function updateCountdown() {
+    const now = getEDTTime();
+
+    const midnight = new Date(now);
+    midnight.setHours(24, 0, 0, 0);
+
+    let diff = midnight - now;
+
+    if (diff <= 0) {
+      diff = 24 * 60 * 60 * 1000; // Reset to 24 hours if it's midnight
+    }
+
+    const hours = String(Math.floor(diff / 3600000)).padStart(2, "0");
+    const minutes = String(Math.floor((diff % 3600000) / 60000)).padStart(2, "0");
+    const seconds = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
+
+    // Update only if the values have changed
+    document.querySelectorAll("[data-timer-hour]").forEach(el => {
+      el.textContent = hours;
+    });
+
+    document.querySelectorAll("[data-timer-minute]").forEach(el => {
+      el.textContent = minutes;
+    });
+
+    document.querySelectorAll("[data-timer-seconds]").forEach(el => {
+      el.textContent = seconds;
+    });
+  }
+
+  // Update every second
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
